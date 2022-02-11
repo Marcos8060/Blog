@@ -10,9 +10,6 @@ body{
     display: flex;
     align-items: center;
 }
-.hero_section{
-    height: 100vh;
-}
 .header_section >  h1{
     font-weight: 900;
 }
@@ -49,4 +46,23 @@ body{
     background-color: #679DB9;
     transition: 1s;
     color: white;
+}
+/* blogs */
+.blog_head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.blog_head > img{
+    width: 60px;
+    height: 60px;
+    border-radius: 999px;
+}
+.blog{
+    background: white;
+    box-shadow: 1px 3px 4px 1px gray;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 350px;
 }
