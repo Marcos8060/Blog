@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Great+Vibes&family=Nunito:wght@500;600&family=Poppins:wght@200;300;400&display=swap');
+
+body{
+    font-family: 'Nunito', sans-serif;
+}
+.hero_section{
+    background: #C5E2F0;
+}
+.header_section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header_section >  h1{
+    font-weight: 900;
+}
+.header_section > ul {
+    display: flex;
+    align-items: center;
+}
+.header_section > ul li{
+    list-style-type: none;
+    margin: 20px;
+}
+.header_section > ul > li > a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
