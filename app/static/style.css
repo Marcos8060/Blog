@@ -66,3 +66,15 @@ body{
     margin: 10px;
     width: 350px;
 }
+/* footer */
+footer{
+    background: #679DB9;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+footer > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
