@@ -1,1 +1,29 @@
- 
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="login">
+    <div class="container">
+        <a href="{{url_for('index')}}" style="text-decoration: none;color: black;font-size: 20px;margin-top: 5vh;">Home</a>
+        <div class="row">
+            <div class="row form mt-5">
+                <form method="POST" class="form-register">
+                    {{ form.csrf_token() }}
+                    {{ form.username.label(class='form-label') }}
+                    {{ form.username(class="form-control", placeholder="User Name") }}
+        
+                    {{ form.password.label(class='form-label') }}
+                    {{ form.password(class="form-control", placeholder="Password") }}
+        
+                    <br>
+                    <div class="checkbox mb-3">
+                        <small class="text-white">Do not have an account?</small>
+                        <a class="text-white" href="{{ url_for('register') }}">Sign Up</a>
+                    </div>
+        
+                    {{ form.submit(class="btn2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

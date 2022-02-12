@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://marcos:getaways@localhost/pitch_lab'
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://marcos:getaways@localhost/blog_hub'
 
 
 

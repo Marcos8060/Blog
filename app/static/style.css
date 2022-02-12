@@ -107,6 +107,11 @@ footer{
     color: black;
     transition: 1s;
 }
+/* login */
+.login{
+    background: #C5E2F0;
+    height: 100vh;
+}
 footer > div{
     display: flex;
     align-items: center;
