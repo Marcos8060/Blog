@@ -31,18 +31,18 @@ def register():
     form = RegisterForm()
     if form.validate_on_submit():
         user = User(username=form.username.data,email=form.email.data,password=form.password1.data)
-        message = Message('Pitch Lab',sender='marcosgav80@gmail.com',recipients=([form.email.data]))
+        message = Message('BlogHub',sender='marcosgav80@gmail.com',recipients=([form.email.data]))
         message.body = f'Thank you {form.username.data} and welcome to Pitch Lab Community where we turn your dreams into reality'
         mail.send(message)
         db.session.add(user)
         db.session.commit()
-        flash(f'Welcome to Pitchlab to proceed, kindly login',category='success')
+        flash(f'Welcome to BlogHub to proceed, kindly login',category='success')
     if form.errors != {}:
         for error_message in form.errors.values():
             flash(f'There was an error with creating a user: {error_message}',category='danger')
     return render_template('signUp.html',form=form) 
 
-@app.route('/login')
+@app.route('/login',methods=['GET','POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -50,7 +50,7 @@ def login():
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
             flash(f'Success! You are logged in as {attempted_user.username}',category='success')
-            return redirect(url_for('pitches'))
+            return redirect(url_for('index'))
         else:
             flash('Username and password do not match! Please try again',category='danger')
 
