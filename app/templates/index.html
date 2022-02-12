@@ -31,6 +31,10 @@
     <div class="container">
         <div class="blogs">
             <h1 class="mt-5 mb-5" style="font-weight: bold;">Latest Blog Posts</h1>
+            {% for blog in blogs %}
+               <h5>{{ blog.title }}</h5>
+               <p>{{blog.blog}}</p>
+            {% endfor %}
             <div class="row">
                 <div class="col-4 blog">
                     <div class="blog_head">
@@ -69,21 +73,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST">
+                    <!-- <form action="{{url_for('blogs')}}" method="POST">
                         <label for="title" class="form-label" style="color: black;">Title</label>
                         <input type="text" name="title" class="form-control" placeholder="Title..." required>
                         <textarea name="blog" id="" cols="30" rows="5" placeholder="Write blog..." class="form-control mt-3" required></textarea>
                         <button type="submit" class="btn3 mt-2">Submit</button>
-                    </form>
+                    </form> -->
                 </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn2" data-bs-dismiss="modal" style="color: black;">Submit</button>
-                </div> -->
             </div>
         </div>
     </div>
     <!-- End of blog modal -->
-
     <footer>
         <div class="container">
             <h1>Blog</h1>

@@ -41,11 +41,12 @@ class User(db.Model,UserMixin):
 class Blog(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer,primary_key=True)
-    title = db.Column(db.String(200),nullable=False)
-    blogs = db.Column(db.String(1500),nullable=False)
+    title = db.Column(db.String(200))
+    blogs = db.Column(db.String(1500))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
 
-    def __init__(self,title,blog):
+    def __init__(self,title,blogs,user_id):
         self.title = title
-        self.blog = blog
+        self.blogs = blogs
+        self.user_id = user_id
