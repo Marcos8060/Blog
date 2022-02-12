@@ -1,3 +1,4 @@
+from sqlalchemy import ForeignKey
 from app import db,login_manager
 from app import bcrypt
 from flask_login import UserMixin
@@ -16,6 +17,7 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String(length=30),nullable=False, unique=True)
     email = db.Column(db.String(length=50),nullable=False,unique=True)
     password_hash = db.Column(db.String(255),nullable=False)
+    blog = db.relationship('Blog',backref='owned_user',lazy='dynamic')
 
 
     sys.setrecursionlimit(1500)
@@ -35,3 +37,15 @@ class User(db.Model,UserMixin):
         self.username = username
         self.email = email
         self.password = password
+
+class Blog(db.Model):
+    __tablename__ = 'blogs'
+    id = db.Column(db.Integer,primary_key=True)
+    title = db.Column(db.String(200),nullable=False)
+    blogs = db.Column(db.String(1500),nullable=False)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+
+
+    def __init__(self,title,blog):
+        self.title = title
+        self.blog = blog

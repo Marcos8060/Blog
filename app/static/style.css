@@ -107,6 +107,15 @@ footer{
     color: black;
     transition: 1s;
 }
+.btn3{
+    background: #679DB9;
+    height: 40px;
+    border: 2px solid #C5E2F0;
+    color: white;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 /* login */
 .login{
     background: #C5E2F0;

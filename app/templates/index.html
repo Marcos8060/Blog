@@ -1,32 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="hero_section">
-      <div class="container">
+<div class="hero_section">
+    <div class="container">
         <div class="header_section">
             <h1>Blog</h1>
             <ul class="navs">
                 <li><a href="#">Quotes</a></li>
                 <li><a href="{{ url_for('register')}}">SignUp</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="{{ url_for('login')}}">Login</a></li>
             </ul>
-      </div>
-      <div class="hero">
-          <div class="row">
-              <div class="col-md-5" style="margin-top: 10vh;">
-                  <h1 style="font-weight: bolder;font-size: 50px;">In Our Blood there is creativity.</h1>
-                  <p style="line-height: 30px;font-size: 18px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe porro quasi nobis tempore accusamus magnam consequatur ad dignissimos atque facere?</p>
-                  <button class="btn1">Read More</button>
-              </div>
-              <div class="col-md-7 img1">
-                  <img class="img-fluid" src="../static/Images/black.png" alt="image">
-              </div>
-          </div>
-      </div>
+        </div>
+        <div class="hero">
+            <div class="row">
+                <div class="col-md-5" style="margin-top: 10vh;">
+                    <h1 style="font-weight: bolder;font-size: 50px;">In Our Blood there is creativity.</h1>
+                    <p style="line-height: 30px;font-size: 18px;">Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Saepe porro quasi nobis tempore accusamus magnam consequatur ad dignissimos atque facere?
+                    </p>
+                    <button class="btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">Read More</button>
+                </div>
+                <div class="col-md-7 img1">
+                    <img class="img-fluid" src="../static/Images/black.png" alt="image">
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="blogs_section">
-      <div class="container">
+</div>
+<div class="blogs_section">
+    <div class="container">
         <div class="blogs">
             <h1 class="mt-5 mb-5" style="font-weight: bold;">Latest Blog Posts</h1>
             <div class="row">
@@ -35,31 +37,59 @@
                         <img class="img-fluid" src="../static/Images/portfolio.png" alt="image">
                         <h5>Business</h5>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reprehenderit dolorem placeat commodi sint doloremque.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reprehenderit dolorem placeat
+                        commodi sint doloremque.</p>
                 </div>
                 <div class="col-4 blog">
                     <div class="blog_head">
                         <img class="img-fluid" src="../static/Images/portfolio.png" alt="image">
                         <h5>Business</h5>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reprehenderit dolorem placeat commodi sint doloremque.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reprehenderit dolorem placeat
+                        commodi sint doloremque.</p>
                 </div>
                 <div class="col-4 blog">
                     <div class="blog_head">
                         <img class="img-fluid" src="../static/Images/portfolio.png" alt="image">
                         <h5>Business</h5>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reprehenderit dolorem placeat commodi sint doloremque.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reprehenderit dolorem placeat
+                        commodi sint doloremque.</p>
                 </div>
             </div>
         </div>
-      </div>
-      <footer>
-          <div class="container">
+    </div>
+
+    <!-- modal section -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Write Blog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        <label for="title" class="form-label" style="color: black;">Title</label>
+                        <input type="text" name="title" class="form-control" placeholder="Title..." required>
+                        <textarea name="blog" id="" cols="30" rows="5" placeholder="Write blog..." class="form-control mt-3" required></textarea>
+                        <button type="submit" class="btn3 mt-2">Submit</button>
+                    </form>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn2" data-bs-dismiss="modal" style="color: black;">Submit</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- End of blog modal -->
+
+    <footer>
+        <div class="container">
             <h1>Blog</h1>
             <p>@CopyRight AllRights Reserved</p>
             <h1>2022</h1>
-          </div>
-      </footer>
-  </div>
+        </div>
+    </footer>
+</div>
 {% endblock %}
