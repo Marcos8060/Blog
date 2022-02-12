@@ -42,7 +42,7 @@ class Blog(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer,primary_key=True)
     title = db.Column(db.String(200))
-    blogs = db.Column(db.String(1500))
+    blogs = db.Column(db.String(5000))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
 

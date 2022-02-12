@@ -9,6 +9,7 @@
                 <li><a href="#">Quotes</a></li>
                 <li><a href="{{ url_for('register')}}">SignUp</a></li>
                 <li><a href="{{ url_for('login')}}">Login</a></li>
+                <li><a href="{{ url_for('profile')}}">View Profile</a></li>
             </ul>
         </div>
         <div class="hero">
@@ -31,35 +32,14 @@
     <div class="container">
         <div class="blogs">
             <h1 class="mt-5 mb-5" style="font-weight: bold;">Latest Blog Posts</h1>
-            {% for blog in blogs %}
-               <h5>{{ blog.title }}</h5>
-               <p>{{blog.blog}}</p>
-            {% endfor %}
             <div class="row">
-                <div class="col-4 blog">
-                    <div class="blog_head">
-                        <img class="img-fluid" src="../static/Images/portfolio.png" alt="image">
-                        <h5>Business</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reprehenderit dolorem placeat
-                        commodi sint doloremque.</p>
-                </div>
-                <div class="col-4 blog">
-                    <div class="blog_head">
-                        <img class="img-fluid" src="../static/Images/portfolio.png" alt="image">
-                        <h5>Business</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reprehenderit dolorem placeat
-                        commodi sint doloremque.</p>
-                </div>
-                <div class="col-4 blog">
-                    <div class="blog_head">
-                        <img class="img-fluid" src="../static/Images/portfolio.png" alt="image">
-                        <h5>Business</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reprehenderit dolorem placeat
-                        commodi sint doloremque.</p>
-                </div>
+                {%for blog in blogs  %}
+               <div class="col-6 mt-3">
+                <h5 style="font-weight: bold;">{{ blog.title }}</h5>
+                <p>{{ blog.blogs }}</p>
+                <i>By {{current_user.username}}</i>
+               </div>
+               {% endfor %}
             </div>
         </div>
     </div>
@@ -73,7 +53,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- <form action="{{url_for('blogs')}}" method="POST">
+                    <!-- <form action="{{url_for('index')}}" method="POST">
                         <label for="title" class="form-label" style="color: black;">Title</label>
                         <input type="text" name="title" class="form-control" placeholder="Title..." required>
                         <textarea name="blog" id="" cols="30" rows="5" placeholder="Write blog..." class="form-control mt-3" required></textarea>

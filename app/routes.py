@@ -24,7 +24,16 @@ mail = Mail(app)
 
 @app.route('/',methods=['GET','POST'])
 def index():
-    return render_template('index.html')
+    blog = Blog
+    if request.method == 'POST':
+        title = request.form['title']
+        blog = request.form['blog']
+        print(title,blog)
+        new_blog = Blog(title,blog,user_id=current_user.id)
+        db.session.add(new_blog)
+        db.session.commit()
+    blogs = Blog.query.all()
+    return render_template('index.html',blogs=blogs)
 
 @app.route('/signUp',methods=['GET','POST'])
 def register():
@@ -37,7 +46,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash(f'Welcome to BlogHub to proceed, kindly login',category='success')
-        return redirect('blogs')
+        return redirect('profile')
     if form.errors != {}:
         for error_message in form.errors.values():
             flash(f'There was an error with creating a user: {error_message}',category='danger')
@@ -56,9 +65,9 @@ def login():
             flash('Username and password do not match! Please try again',category='danger')
     return render_template('login.html',form=form)
 
-@app.route('/blogs',methods=['GET','POST'])
+@app.route('/profile',methods=['GET','POST'])
 @login_required
-def blogs():
+def profile():
     blog = Blog
     if request.method == 'POST':
         title = request.form['title']
@@ -68,4 +77,4 @@ def blogs():
         db.session.add(new_blog)
         db.session.commit()
     blogs = Blog.query.all()
-    return render_template('blog.html',blogs=blogs)
+    return render_template('profile.html',blogs=blogs)

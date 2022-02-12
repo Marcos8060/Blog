@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="blog_post">
+    <div class="blog_hero">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <h4><a href="{{url_for('index')}}" style="text-decoration: none;color: black;font-size: 20px;margin-top: 5vh;">Home</a></h4>
+                <h4>Hey {{current_user.username }}</h4>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="profile">
+                        <div class="img_box"></div>
+                        <h4>Username: <small style="font-weight: bold;">{{ current_user.username }}</small></h4>
+                        <h4>Email: <small style="font-weight: bold;">{{ current_user.email }}</small></h4>
+                    </div>
+                </div>
+                <div class="col-6 blog_item">
+                    <form action="" method="POST" class="post">
+                        <label for="title" class="form-label" style="color: black;">Title</label>
+                        <input type="text" name="title" class="form-control" placeholder="Title..." required>
+                        <textarea name="blog" id="" cols="30" rows="5" placeholder="Write blog..." class="form-control mt-3" required></textarea>
+                        <button type="submit" class="btn3 mt-2">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <h4 class="text-center">Blogs by {{ current_user.username }}</h4>
+                <div class="col-6 mt-4">
+                    <h5 style="font-weight: bold;">Business</h5>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti aperiam ipsa voluptates quasi soluta beatae itaque provident in a adipisci.</p>
+                    <i>By {{current_user.username}}</i>
+                </div>
+                <div class="col-6 mt-4">
+                    <h5 style="font-weight: bold;">Business</h5>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti aperiam ipsa voluptates quasi soluta beatae itaque provident in a adipisci.</p>
+                    <i>By {{current_user.username}}</i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

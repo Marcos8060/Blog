@@ -54,8 +54,8 @@ body{
     justify-content: space-between;
 }
 .blog_head > img{
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 999px;
 }
 .blog{
@@ -66,6 +66,31 @@ body{
     margin: 10px;
     width: 350px;
 }
+.blog_post{
+    background: #C5DDE0;
+}
+.blog_item{
+    background: #EEF0F4;
+    margin: auto;
+    padding: 20px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    color: black;
+    border-radius: 10px;
+}
+.blog_item > form > input{
+    background: transparent;
+}
+.blog_item > form > textarea{
+    background: transparent;
+}
+.blog_item > form > textarea:focus{
+    background: transparent;
+}
+.blog_item > form > input:focus{
+    background: transparent;
+}
+
 /* footer */
 footer{
     background: #679DB9;
@@ -116,10 +141,36 @@ footer{
     padding-left: 10px;
     padding-right: 10px;
 }
+.btn4{
+    background: #679DB9;
+    height: 40px;
+    border: 2px solid #C5E2F0;
+    color: white;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 /* login */
 .login{
     background: #C5E2F0;
     height: 100vh;
+}
+/* profile */
+.profile{
+    background: #EEF0F4;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.img_box{
+    background: #C5E2F0;
+    height: 150px;
+    width: 150px;
+    border-radius: 999px;
 }
 footer > div{
     display: flex;
