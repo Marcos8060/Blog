@@ -8,7 +8,8 @@
             <ul class="navs">
                 <li><a href="{{ url_for('register')}}">SignUp</a></li>
                 <li><a href="{{ url_for('login')}}">Login</a></li>
-                <li><a href="{{ url_for('profile')}}">View Profile</a></li>
+                <li><a href="{{ url_for('profile')}}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
         </div>
         <div class="hero">
@@ -39,8 +40,47 @@
             <div class="row">
                 {%for blog in blogs  %}
                <div class="col-5 mt-3 home_blog">
-                <a href="{{ url_for('comments')}}" style="text-decoration: none;color: black;"><h5 style="font-weight: bold;">{{ blog.title }}</h5></a>
+                <h5 style="font-weight: bold;">{{ blog.title }}</h5>
                 <p>{{ blog.blogs }}</p>
+                <div class="collapse" id="comments-{{ blog.id }}">
+                    <div class="card">
+                        <div class="card-body" id="comments-expanded-{{ blog.id }}"> 
+                            {% for comment in blog.comments %}
+                            <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <p>{{ comment.comments }}:</p>
+                                <small>By {{ comment.owned_user.username }}</small>
+                            </div>
+                            <div>
+                                {% if current_user.id == comment.author or current_user.id == blog.author %}
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/delete-comment/{{ comment.id }}" class="dropdown-item">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <p class="card-text">
+                    {% if blog.comments|length > 0 %}
+                    <a data-bs-toggle="collapse" href="#comments-{{ blog.id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      <small>View {{ blog.comments|length }} Comments</small>
+                    </a>
+                    {% else %}
+                    <small class="text-muted">No comments</small>
+                    {% endif %}
+                </p>
+                <form action="/create_comment/{{ blog.id }}" method="POST">
+                    <input name="comment"  class="form-control" placeholder="Write comment..." style="background: transparent;"></input>
+                    <button type="submit" class="btn4 mt-2">Post Comment</button>
+                </form>
                </div>
                {% endfor %}
             </div>

@@ -48,8 +48,8 @@ def register():
         mail.send(message)
         db.session.add(user)
         db.session.commit()
-        flash(f'Welcome to BlogHub to proceed, kindly login',category='success')
-        # return redirect('index')
+        flash(f'Welcome to BlogHub to proceed',category='success')
+        return redirect(url_for('index'))
     if form.errors != {}:
         for error_message in form.errors.values():
             flash(f'There was an error with creating a user: {error_message}',category='danger')
@@ -76,7 +76,7 @@ def profile():
         title = request.form['title']
         blog = request.form['blog']
         print(title,blog)
-        new_blog = Blog(title,blog,user_id=current_user.id)
+        new_blog = Blog(title,blog)
         db.session.add(new_blog)
         db.session.commit()
     blogs = Blog.query.all()
@@ -88,17 +88,40 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-@app.route('/comments',methods=['POST','GET'])
+@app.route('/create_comment/<blog_id>',methods=['POST'])
 @login_required
-def comments():
-    comment = Comment
-    if request.method == 'POST':
-        comment = request.form['comment']
-        print(comment)
-        new_comment = Comment(comment)
-        db.session.add(new_comment)
+def create_comment(blog_id):
+    comment = request.form.get('comment')
+
+    if not comment:
+        flash('Comment cannot be empty',category='danger')
+    else:
+        blog = Blog.query.filter_by(id=blog_id)
+        if blog:
+            comment = Comment(comments=comment,author=current_user.id,blog_id=blog_id)
+            db.session.add(comment)
+            db.session.commit()
+            flash(f'Congratulations {current_user.username}, your comment is posted successfully')
+        else:
+            flash('Post does not exists',category='danger')
+
+        return redirect(url_for('index'))
+
+@app.route('/delete-comment/<comment_id>')
+@login_required
+def delete_comment(comment_id):
+    comment = Comment.query.filter_by(id=comment_id).first()
+
+    if not comment:
+        flash('Comment does not exist',category='danger')
+    elif current_user.id != comment.author and current_user.id != comment.post.author:
+        flash('You do not have permission to delete this comment', category='danger')
+    else:
+        db.session.delete(comment)
         db.session.commit()
-    comments = Comment.query.all()
-    return render_template('comment.html',comments=comments)
+        flash('Comment deleted successfully',category='danger')
+
+    return redirect(url_for('index'))
+
 
 

@@ -32,9 +32,8 @@
                 <h4 class="text-center">Blogs by {{ current_user.username }}</h4>
                 {% for blog in blogs %}
                 <div class="col-6 mt-4">
-                    <h5 style="font-weight: bold;">{{ blog.title }}</h5>
-                    <p>{{ blog.blogs }}</p>
-                    <i>By {{current_user.username}}</i>
+                    <h5 style="font-weight: bold;">{{ current_user.blog.title }}</h5>
+                    <p>{{ current_user.blog.blogs }}</p>
                 </div>
                 {% endfor %}
             </div>
