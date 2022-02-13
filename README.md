@@ -18,7 +18,7 @@
 
 ## How to run the application
 
-git clone https://github.com/Marcos8060/FLASK_NEWS_API.git
+git clone https://github.com/Marcos8060/Blog.git
 
 Technolgies used
 * Python 3.8
