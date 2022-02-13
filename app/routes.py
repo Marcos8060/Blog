@@ -79,6 +79,7 @@ def profile():
         new_blog = Blog(title,blog)
         db.session.add(new_blog)
         db.session.commit()
+        return redirect(url_for('index'))
     blogs = Blog.query.all()
     return render_template('profile.html',blogs=blogs)
 
@@ -86,6 +87,7 @@ def profile():
 @login_required
 def logout():
     logout_user()
+    flash('You are logged out succesfully!',category='success')
     return redirect(url_for("index"))
 
 @app.route('/create_comment/<blog_id>',methods=['POST'])
@@ -101,7 +103,7 @@ def create_comment(blog_id):
             comment = Comment(comments=comment,author=current_user.id,blog_id=blog_id)
             db.session.add(comment)
             db.session.commit()
-            flash(f'Congratulations {current_user.username}, your comment is posted successfully')
+            flash(f'Congratulations {current_user.username}, your comment is posted successfully',category='success')
         else:
             flash('Post does not exists',category='danger')
 

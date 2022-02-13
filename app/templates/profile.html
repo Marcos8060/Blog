@@ -5,16 +5,18 @@
     <div class="blog_hero">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
-                <h4><a href="{{url_for('index')}}" style="text-decoration: none;color: black;font-size: 20px;margin-top: 5vh;">Home</a></h4>
+                <h4 style="margin-top: 5vh;"><a href="{{url_for('index')}}" style="text-decoration: none;color: black;font-size: 20px;margin-top: 5vh;">Home</a></h4>
                 <div class="d-flex align-items-center justify-content-between">
-                    <h4 style="margin-right: 25px;">Hey {{current_user.username }}</h4>
-                    <a style="text-decoration: none;color: black;" href="{{ url_for('logout') }}"><h4>Logout</h4></a>
+                    <h4 style="margin-right: 25px;margin-top: 5vh;">Hey {{current_user.username }}</h4>
+                    <a style="text-decoration: none;color: black;margin-top: 5vh;" href="{{ url_for('logout') }}"><h4>Logout</h4></a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <div class="profile">
-                        <div class="img_box"></div>
+                        <div class="img_box">
+                            <img class="img-fluid" src="../static/Images/avatar-removebg-preview.png" alt="">
+                        </div>
                         <h4>Username: <small style="font-weight: bold;">{{ current_user.username }}</small></h4>
                         <h4>Email: <small style="font-weight: bold;">{{ current_user.email }}</small></h4>
                     </div>
@@ -27,15 +29,6 @@
                         <button type="submit" class="btn3 mt-2">Submit</button>
                     </form>
                 </div>
-            </div>
-            <div class="row">
-                <h4 class="text-center">Blogs by {{ current_user.username }}</h4>
-                {% for blog in blogs %}
-                <div class="col-6 mt-4">
-                    <h5 style="font-weight: bold;">{{ current_user.blog.title }}</h5>
-                    <p>{{ current_user.blog.blogs }}</p>
-                </div>
-                {% endfor %}
             </div>
         </div>
     </div>

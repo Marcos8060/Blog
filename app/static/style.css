@@ -60,13 +60,14 @@ body{
 }
 .blog_post{
     background: #C5DDE0;
+    height: 100vh;
 }
-.home_blog{
+/* .home_blog{
     border: 1px solid #C5DDE0;
-    margin: 5px;
+    margin: 2px;
     padding: 10px;
     border-radius: 5px;
-}
+} */
 .blog_item{
     background: #EEF0F4;
     margin: auto;
