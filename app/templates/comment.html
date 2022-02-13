@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <div class="comments">
+     <div class="container">
+        <a href="{{url_for('index')}}" style="text-decoration: none;color: black;font-size: 20px;margin-top: 5vh;">Home</a>
+         <div class="comment_box">
+             <div class="row">
+                 <div class="col-12" style="width: 80%;margin: auto;margin-top: 10vh;">
+                     <h3 class="text-center">Hello world</h3>
+                     <p>Hello world</p>
+                 </div>
+                 <div class="col-4 text-center" style="width: 70%;margin: auto;">
+                    <h4>Give a Comment</h4>
+                    <form action="{{ url_for('comments')}}" method="POST">
+                     <textarea name="comment" id="" cols="30" rows="5" class="form-control" placeholder="Write comment..." style="background: transparent;"></textarea>
+                     <button class="btn4 mt-2">Post Comment</button>
+                    </form>
+                </div>
+             </div>
+             <div class="row text-center" style="margin-top: 7vh;background: #EEF0F4;padding: 15px;">
+                 {% for comment in comments %}
+                 <div class="col-6">
+                    <p>{{ comment.comments }}</p>
+                 </div>
+                 {% endfor %}
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock %}

@@ -20,6 +20,7 @@ class User(db.Model,UserMixin):
     blog = db.relationship('Blog',backref='owned_user',lazy='dynamic')
 
 
+
     sys.setrecursionlimit(1500)
     @property
     def password(self):
@@ -44,9 +45,19 @@ class Blog(db.Model):
     title = db.Column(db.String(200))
     blogs = db.Column(db.String(5000))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-
+    comment_id = db.Column(db.Integer,db.ForeignKey('comments.id'))
 
     def __init__(self,title,blogs,user_id):
         self.title = title
         self.blogs = blogs
         self.user_id = user_id
+
+class Comment(db.Model):
+    __tablename__='comments'
+
+    id = db.Column(db.Integer,primary_key=True)
+    comments = db.Column(db.String(1400))
+    blogs = db.relationship('Blog',backref='comment',lazy='dynamic')
+
+    def __init__(self,comments):
+        self.comments = comments

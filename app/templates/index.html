@@ -6,7 +6,6 @@
         <div class="header_section">
             <h1>Blog</h1>
             <ul class="navs">
-                <li><a href="#">Quotes</a></li>
                 <li><a href="{{ url_for('register')}}">SignUp</a></li>
                 <li><a href="{{ url_for('login')}}">Login</a></li>
                 <li><a href="{{ url_for('profile')}}">View Profile</a></li>
@@ -30,40 +29,23 @@
 </div>
 <div class="blogs_section">
     <div class="container">
+        <div class="quotes mt-3" style="background: rgb(238,240,244);">
+            <h4 class="text-center">Random Quotes</h4>
+            <q>{{ quote.quote}}</q><br>
+            <small style="font-weight: bold;">Author: {{ quote.author }}</small>
+        </div>
         <div class="blogs">
             <h1 class="mt-5 mb-5" style="font-weight: bold;">Latest Blog Posts</h1>
             <div class="row">
                 {%for blog in blogs  %}
-               <div class="col-6 mt-3">
-                <h5 style="font-weight: bold;">{{ blog.title }}</h5>
+               <div class="col-5 mt-3 home_blog">
+                <a href="{{ url_for('comments')}}" style="text-decoration: none;color: black;"><h5 style="font-weight: bold;">{{ blog.title }}</h5></a>
                 <p>{{ blog.blogs }}</p>
-                <i>By {{current_user.username}}</i>
                </div>
                {% endfor %}
             </div>
         </div>
     </div>
-
-    <!-- modal section -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Write Blog</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- <form action="{{url_for('index')}}" method="POST">
-                        <label for="title" class="form-label" style="color: black;">Title</label>
-                        <input type="text" name="title" class="form-control" placeholder="Title..." required>
-                        <textarea name="blog" id="" cols="30" rows="5" placeholder="Write blog..." class="form-control mt-3" required></textarea>
-                        <button type="submit" class="btn3 mt-2">Submit</button>
-                    </form> -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of blog modal -->
     <footer>
         <div class="container">
             <h1>Blog</h1>

@@ -58,22 +58,20 @@ body{
     height: 40px;
     border-radius: 999px;
 }
-.blog{
-    background: white;
-    box-shadow: 1px 3px 4px 1px gray;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 10px;
-    width: 350px;
-}
 .blog_post{
     background: #C5DDE0;
+}
+.home_blog{
+    border: 1px solid #C5DDE0;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
 }
 .blog_item{
     background: #EEF0F4;
     margin: auto;
     padding: 20px;
-    margin-top: 10vh;
+    margin-top: 5vh;
     margin-bottom: 10vh;
     color: black;
     border-radius: 10px;
@@ -160,7 +158,7 @@ footer{
     background: #EEF0F4;
     border-radius: 10px;
     padding: 10px;
-    margin-top: 10vh;
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -176,4 +174,12 @@ footer > div{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+/* comments */
+.comments{
+   background: #C5DDE0; 
+}
+.quotes{
+    text-align: center;
+    padding: 7px;
 }

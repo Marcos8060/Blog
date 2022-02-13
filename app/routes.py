@@ -6,11 +6,12 @@ from crypt import methods
 from flask import render_template,request, redirect,url_for,flash,abort
 from flask_login import login_user,logout_user,login_required,current_user
 from app import app
-from app.models import User,Blog
+from app.models import User,Blog,Comment
 from app import db
 from app.forms import RegisterForm,LoginForm
 from flask_login import login_required, login_user
 from flask_mail import Mail,Message
+import requests
 
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -33,7 +34,9 @@ def index():
         db.session.add(new_blog)
         db.session.commit()
     blogs = Blog.query.all()
-    return render_template('index.html',blogs=blogs)
+    BASE_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
+    data = requests.get(BASE_URL).json()
+    return render_template('index.html',blogs=blogs,quote=data)
 
 @app.route('/signUp',methods=['GET','POST'])
 def register():
@@ -46,7 +49,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash(f'Welcome to BlogHub to proceed, kindly login',category='success')
-        return redirect('profile')
+        # return redirect('index')
     if form.errors != {}:
         for error_message in form.errors.values():
             flash(f'There was an error with creating a user: {error_message}',category='danger')
@@ -60,7 +63,7 @@ def login():
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
             flash(f'Success! You are logged in as {attempted_user.username}',category='success')
-            return redirect(url_for('blogs'))
+            return redirect(url_for('index'))
         else:
             flash('Username and password do not match! Please try again',category='danger')
     return render_template('login.html',form=form)
@@ -78,3 +81,24 @@ def profile():
         db.session.commit()
     blogs = Blog.query.all()
     return render_template('profile.html',blogs=blogs)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("index"))
+
+@app.route('/comments',methods=['POST','GET'])
+@login_required
+def comments():
+    comment = Comment
+    if request.method == 'POST':
+        comment = request.form['comment']
+        print(comment)
+        new_comment = Comment(comment)
+        db.session.add(new_comment)
+        db.session.commit()
+    comments = Comment.query.all()
+    return render_template('comment.html',comments=comments)
+
+
