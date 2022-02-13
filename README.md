@@ -4,7 +4,7 @@
 
 ## Description
 
- News API is a python application built on flask framework that consumes the NEWS API and displays different news categories.
+ A blog website where users can post, comment and delete unwanted comments from the application.
 ## Setup and Installation Requirements
 
 * Python version 3.8
