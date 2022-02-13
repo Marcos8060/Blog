@@ -1,6 +1,6 @@
 # Flask Blog Website
 
-### Created by Marcos Ochieng on 30/01/2022
+### Created by Marcos Ochieng on 13/02/2022
 
 ## Description
 
