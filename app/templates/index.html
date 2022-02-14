@@ -6,8 +6,12 @@
         <div class="header_section">
             <h1>Blog</h1>
             <ul class="navs">
+                {% if current_user.is_authenticated %}
+                <li><a>Hey {{ current_user.username }}</a></li>
+                {% else %}
                 <li><a href="{{ url_for('register')}}">SignUp</a></li>
                 <li><a href="{{ url_for('login')}}">Login</a></li>
+                {% endif %}
                 <li><a href="{{ url_for('profile')}}">Write Blog</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>

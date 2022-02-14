@@ -48,6 +48,7 @@ def register():
         mail.send(message)
         db.session.add(user)
         db.session.commit()
+        login_user(user)
         flash(f'Welcome to BlogHub to proceed',category='success')
         return redirect(url_for('index'))
     if form.errors != {}:
@@ -69,7 +70,7 @@ def login():
     return render_template('login.html',form=form)
 
 @app.route('/profile',methods=['GET','POST'])
-@login_required
+# @login_required
 def profile():
     blog = Blog
     if request.method == 'POST':
