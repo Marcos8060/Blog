@@ -7,7 +7,9 @@ import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://marcos:getaways@localhost/blog_hub'
+# app.config['SQLALCHEMY_DATABASE_URI']='postgresql://marcos:getaways@localhost/blog_hub'
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+
 
 
 

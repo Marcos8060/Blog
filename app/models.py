@@ -2,7 +2,7 @@ from email.policy import default
 from time import timezone
 from sqlalchemy import ForeignKey, func
 from app import db,login_manager
-from app import bcrypt
+from app import bcrypt,app
 from flask_login import UserMixin
 import sys
 from werkzeug.security import generate_password_hash,check_password_hash
@@ -66,4 +66,8 @@ class Comment(db.Model):
         self.comments = comments
         self.author = author
         self.blog_id = blog_id
+
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
