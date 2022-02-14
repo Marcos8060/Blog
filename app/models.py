@@ -67,7 +67,5 @@ class Comment(db.Model):
         self.author = author
         self.blog_id = blog_id
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
+
 
